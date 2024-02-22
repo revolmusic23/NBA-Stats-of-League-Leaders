@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBA Stats of League Leaders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>NBA Stats of League Leaders</h1>
+
+    <div class="sort-container">
+      <select name="Sort" id="sort-option" @change="sortPlayers">
+        <option value="PTS">Points</option>
+        <option value="AST">Assists</option>
+        <option value="REB">Rebounds</option>
+        <option value="STL">Steals</option>
+        <option value="BLK">Blocks</option>
+      </select>
+      <input type="number" id="num-players" placeholder="10" @input="updateNumPlayers">
+    </div>
+
+    <div v-for="(player, index) in displayedPlayers" class="player-card">
+      <div class="left">
+        <div class="place">
+          <h3>{{ index + 1 }}</h3>
+          <p>PLACE</p>
+        </div>
+        <div class="info">
+          <h4>{{ player.PLAYER.toUpperCase() }}</h4>
+          <p>{{ player.TEAM }}</p>
+        </div>
+      </div>
+  
+      <div class="right">
+        <div class="pts">
+          <h3>{{ player.PTS }}</h3>
+          <p>POINTS</p>
+        </div>
+        <div class="ast">
+          <h3>{{ player.AST }}</h3>
+          <p>ASSISTS</p>
+        </div>
+        <div class="reb">
+          <h3>{{ player.REB }}</h3>
+          <p>REBOUNDS</p>
+        </div>
+        <div class="stl">
+          <h3>{{ player.STL }}</h3>
+          <p>STEALS</p>
+        </div>
+        <div class="blk">
+          <h3>{{ player.BLK }}</h3>
+          <p>BLOCKS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
