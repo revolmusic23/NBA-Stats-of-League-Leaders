@@ -144,3 +144,89 @@ h1 {
 .player-card .right > div {
   width: 18%;
 }
+
+@media (max-width: 1600px) {
+  h1 {
+    font-size: 38px;
+  }
+  .player-card h3 {
+    font-size: 26px;
+  }
+  .player-card h4 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1400px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .player-card h3 {
+    font-size: 24px;
+  }
+  
+  .player-card h4 {
+    font-size: 20px;
+  }
+  
+  .player-card p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .player-card {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .player-card .left, .player-card .right {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .player-card h3 {
+    font-size: 24px;
+  }
+  
+  .player-card h4 {
+    font-size: 22px;
+  }
+  
+  .player-card p {
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+}
+
+/* 手機專用樣式 */
+@media (max-width: 600px) {
+
+  .sort-container select, 
+  .sort-container input {
+    width: 30%;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .player-card h3 {
+    font-size: 20px;
+  }
+
+  
+  .player-card h4 {
+    font-size: 16px;
+  }
+  
+  .player-card p {
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+}
