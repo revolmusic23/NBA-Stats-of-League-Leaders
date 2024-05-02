@@ -17,14 +17,14 @@
     <h1>NBA Stats of League Leaders</h1>
 
     <div class="sort-container">
-      <select name="Sort" id="sort-option" @change="sortPlayers">
+      <select name="Sort" id="sort-option" ref="sortOption" @change="sortPlayers">
         <option value="PTS">Points</option>
         <option value="AST">Assists</option>
         <option value="REB">Rebounds</option>
         <option value="STL">Steals</option>
         <option value="BLK">Blocks</option>
       </select>
-      <input type="number" id="num-players" placeholder="10" @input="updateNumPlayers">
+      <input type="number" id="num-players" ref="numPlayers" placeholder="10" @input="updateNumPlayers">
     </div>
 
     <div v-for="(player, index) in displayedPlayers" class="player-card">

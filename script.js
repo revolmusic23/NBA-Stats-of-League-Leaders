@@ -11,10 +11,14 @@ new Vue({
   methods: {
     fetchPlayers(statCategory) {
       const url = `https://stats.nba.com/stats/leagueLeaders?LeagueID=00&PerMode=PerGame&Scope=S&Season=2023-24&SeasonType=Regular%20Season&StatCategory=${statCategory}`;
-      axios.get(url)
+      fetch(url)
         .then(response => {
-          const headers = response.data.resultSet.headers;
-          const playerStats = response.data.resultSet.rowSet.slice(0, this.numPlayers);
+          return response.json(); // 解析 JSON 數據
+        })
+        .then(data => {
+          console.log("data:", data);
+          const headers = data.resultSet.headers;
+          const playerStats = data.resultSet.rowSet.slice(0, this.numPlayers);
           this.players = playerStats.map(stats => {
             let playerObj = {};
             stats.forEach((stat, index) => {
@@ -29,12 +33,15 @@ new Vue({
         });
     },
     sortPlayers() {
-      const sortBy = document.getElementById('sort-option').value;
+      // const sortBy = document.getElementById('sort-option').value;
+      const sortBy = this.$refs.sortOption.value || 10;
       this.fetchPlayers(sortBy);
     },
     updateNumPlayers() {
-      this.numPlayers = document.getElementById('num-players').value || 10;
-      this.fetchPlayers(document.getElementById('sort-option').value);
+      // this.numPlayers = document.getElementById('num-players').value || 10;
+      // this.fetchPlayers(document.getElementById('sort-option').value);
+      this.numPlayers = this.$refs.numPlayers.value || 10;
+      this.fetchPlayers(this.$refs.sortOption.value);
     }
   }
 });
